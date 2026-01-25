@@ -19,6 +19,7 @@ void StrainDistribution::computeStrainDistribution(double plasticStrain, double 
 {
     double k = polygonHeight / (bottomFiberStrain/1000 - topFiberStrain/1000);
 
+    // double k = polygonHeight / (-topFiberStrain/1000 - bottomFiberStrain/1000);
     neutralAxisCoord = (-topFiberStrain/1000) * k;
     plasticStrainCoord = ((-plasticStrain/1000) - (topFiberStrain/1000)) * k;
     ruptureStrainCoord = ((-ruptureStrain/1000) - (topFiberStrain/1000)) * k;
