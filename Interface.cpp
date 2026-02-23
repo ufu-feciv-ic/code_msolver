@@ -375,6 +375,12 @@ void Interface::crossSectionData(Section &section)
                     clearInputSection(section);
                     ImGui::EndTabItem();
                 }
+                if (ImGui::BeginTabItem("Seção L"))
+                {
+                    inputSectionL(section);
+                    clearInputSection(section);
+                    ImGui::EndTabItem();
+                }
                 // if (ImGui::BeginTabItem("Debug"))
                 // {
                 //     inputSectionDebug(section);
@@ -501,6 +507,35 @@ void Interface::inputSectionCircular(Section &section)
 
         section.originalPolygon.setVertices(circlePoints);
         section.originalPolygon.SetNumPoints(circlePoints.size());
+        section.updateGeometricProperties();
+        section.defineGeometry(section.originalPolygon, section.originalReinforcement);
+
+        shouldAutoFit = true;
+    }
+}
+
+void Interface::inputSectionL(Section &section)
+{
+    std::vector<Point> PolygonPoints = {
+        Point(-5,-5), Point(-5,25), Point(-25, 25), Point(-25, -25), Point(25, -25), Point(25, -5), Point(-5,-5)
+    };
+    std::vector<Point> ReinforcementPoints = {
+        Point(-9,-9), Point(-9,6), Point(-9, 21), Point(-21, 21), Point(-21, 6), Point(-21, -9), Point(-21, -21), 
+        Point(-9, -21), Point(6,-21), Point(21, -21), Point(21, -9), Point(6,-9)
+    };
+    std::vector<double> diameters = {
+        16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16
+    };
+
+    if (ImGui::Button("Gerar Seção L"))
+    {
+        section.originalPolygon.clearPolygonVertices();
+        section.originalReinforcement.clearReinforcement();
+        section.workingPolygon.clearPolygonVertices();
+       
+        section.originalPolygon.setVertices(PolygonPoints);
+        section.originalPolygon.SetNumPoints(PolygonPoints.size());
+        section.originalReinforcement.setReinforcement(ReinforcementPoints, diameters);
         section.updateGeometricProperties();
         section.defineGeometry(section.originalPolygon, section.originalReinforcement);
 

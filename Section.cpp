@@ -146,13 +146,14 @@ void Section::computeEquilibrium(double Nsd, double eps1, double eps2)
         strainDistribution, stressRegions, analyticalIntegration,
         internalForces, Nsd);
 
-    std::cout << "--------------------------------------------\n";
-    std::cout << "Angulo: " << workingPolygon.getAngle() << "; "
+    // std::cout << "--------------------------------------------\n";
+    std::cout << "Normal: " << Nsd << "; "
+              << "Angulo: " << workingPolygon.getAngle() << "; "
               << "eps1: " << momentSolver.getTopFiberStrain() << "; "
               << "eps2: " << momentSolver.getBottomFiberStrain() << "; "
               << "Mrdxx: " << momentSolver.getMoment().getX() << "; "
               << "Mrdyy: " << momentSolver.getMoment().getY() << endl;
-    std::cout << "--------------------------------------------\n";
+    // std::cout << "--------------------------------------------\n";
 }
 
 void Section::computeEnvelope(double Nsd)
@@ -169,7 +170,7 @@ void Section::computeEnvelope(double Nsd)
         294, 297, 300, 303, 306, 309, 312, 315, 318, 321, 324, 327, 330, 333, 336,
         339, 342, 345, 348, 351, 354, 357, 360};
 
-    cout << "--------------------------------------------\n";
+    // cout << "--------------------------------------------\n";
 
     for (double angle : angles)
     {
@@ -181,7 +182,7 @@ void Section::computeEnvelope(double Nsd)
         envelopeMoments.push_back(momentSolver.getMoment());
     }
 
-    cout << "--------------------------------------------\n";
+    // cout << "--------------------------------------------\n";
 }
 
 bool Section::isMomentSafe(const Point &momentPoint) const

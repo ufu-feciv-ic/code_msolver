@@ -9,7 +9,7 @@ Reinforcement::Reinforcement()
     totalArea = 0;
 }
 
-void Reinforcement::setReinforcement(vector<Point> collectedReinforcement, vector<double> collectedDiameters)
+void Reinforcement::setReinforcement(std::vector<Point> collectedReinforcement, std::vector<double> collectedDiameters)
 {
 	for (size_t i = 0; i < collectedReinforcement.size(); i++)
 	{

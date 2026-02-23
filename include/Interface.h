@@ -54,6 +54,7 @@ public:
     void inputSectionRectangle(Section &section);
     void inputSectionT(Section &section);
     void inputSectionCircular(Section &section);
+    void inputSectionL(Section &section);
     void inputSectionPolygonal(Section &section);
     void inputSectionDebug(Section &section);
     void showGeometricParameters(Section &section);

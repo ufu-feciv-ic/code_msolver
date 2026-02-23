@@ -15,6 +15,7 @@ void SteelProperties::calculateParameters()
 {
     fyd = fyk / gammaS; //MPa
     strainSteelYield = fyd / E; //por mil
+    // strainSteelYield = fyk / E; //por mil
     strainSteelRupture = 10; //por mil
 }
 
