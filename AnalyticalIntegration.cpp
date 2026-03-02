@@ -209,14 +209,14 @@ double AnalyticalIntegration::computeMomentYYConcreteRectangular(double multFcd,
     {
         case NormativeIntegrationVersion::ABNT_NBR6118_2014:
         {
-            double mcd2yy = multFcd * fcd * ((coef1 * coef1 * coordY) + (coef1 * coef2 * coordY * coordY) + (coef2 * coef2 * coordY * coordY * coordY / 3)) / 2;
+            double mcd2yy = -multFcd * fcd * ((coef1 * coef1 * coordY) + (coef1 * coef2 * coordY * coordY) + (coef2 * coef2 * coordY * coordY * coordY / 3)) / 2;
 
             return mcd2yy * 1000; // kN.m
             break;
         }
         case NormativeIntegrationVersion::ABNT_NBR6118_2023:
         {
-            double mcd2yy = multFcd * etaC * fcd * ((coef1 * coef1 * coordY) + (coef1 * coef2 * coordY * coordY) + (coef2 * coef2 * coordY * coordY * coordY / 3)) / 2;
+            double mcd2yy = -multFcd * etaC * fcd * ((coef1 * coef1 * coordY) + (coef1 * coef2 * coordY * coordY) + (coef2 * coef2 * coordY * coordY * coordY / 3)) / 2;
 
             return mcd2yy * 1000; // kN.m
             break;
@@ -252,7 +252,7 @@ double AnalyticalIntegration::computeMomentYYConcreteParabolic(double coordLN, d
                 eexp = pow(base_eexp, n1);
             }
 
-            double mcd1yy = (multFcd*fcd*(3*coef1*coef1*(xEpc2*
+            double mcd1yy = -(multFcd*fcd*(3*coef1*coef1*(xEpc2*
             (6+5*nConc+nConc*nConc)*eexp+
             (n1)*(n2)*(n3)*coordY)+
             3*coef1*coef2*((n1)*(n2)*(n3)*coordY*coordY+
@@ -289,7 +289,7 @@ double AnalyticalIntegration::computeMomentYYConcreteParabolic(double coordLN, d
                 eexp = pow(base_eexp, n1);
             }
 
-            double mcd1yy = (multFcd*etaC*fcd*(3*coef1*coef1*(xEpc2*
+            double mcd1yy = -(multFcd*etaC*fcd*(3*coef1*coef1*(xEpc2*
             (6+5*nConc+nConc*nConc)*eexp+
             (n1)*(n2)*(n3)*coordY)+
             3*coef1*coef2*((n1)*(n2)*(n3)*coordY*coordY+
